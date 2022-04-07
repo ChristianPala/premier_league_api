@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: pl-api
+Version: 0.0.1
+Summary: client library for our API
+Home-page: UNKNOWN
+Author: Carlo Grigioni and Christian Pala
+Author-email: carlo.grigioni@student.supsi.ch, christian.pala@student.supsi.ch
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.8
+
+UNKNOWN
+
