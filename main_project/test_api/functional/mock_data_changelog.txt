@@ -1,0 +1,18 @@
+Data modified during testing that needs to be reinstated.
+
+coach:
+England id 1
+INSERT INTO `coach`(`id`, `name`, `surname`, `birth_date`, `nationality`) 
+VALUES (265,"Xisco", "MuÃ±oz", NULL, "Spain");
+
+player:
+INSERT INTO `player`(`id`, `name`, `surname`, `birth_date`, `nationality`, `height`, `role`) 
+VALUES (44330, "Zurab","Khizanishvili","1981-06-10",NULL,"185 cm","DF");
+
+referee:
+England id 1
+INSERT INTO `referee`(`id`, `name`, `surname`, `birth_date`, `nationality`) VALUES (92, "Tony","Harrington",Null,"England");
+
+team:
+Vitality Stadium id 1
+INSERT INTO `team`(`id`, `name`, `address`, `stadium`, `url`) VALUES (50,"Wolverhampton Wander","Molineux Ground - Waterloo Road - WV1 4QR Wolverhampton","Molineux Stadium","https://www.wolves.co.uk/");

@@ -1,0 +1,1080 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a simple API for the english Premier League.",
+    "version": "1.0.0",
+    "title": "Premier League API",
+    "contact": {
+      "name": "Carlo Grigioni, Christian Pala"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags": [
+    {
+      "name": "coaches",
+      "description": "all operations on premier league coaches"
+    },
+
+    {
+      "name": "matches",
+      "description": "all operations on premier league matches"
+    },
+    {
+      "name": "players",
+      "description": "all operations on premier league players"
+    },
+    {
+      "name": "referees",
+      "description": "all operations on premier league referees"
+    },
+
+    {
+      "name": "teams",
+      "description": "all operations on premier league teams"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/coaches": {
+      "get": {
+        "tags": [
+          "coaches"
+        ],
+        "summary": "shows all coaches",
+        "description": "See all coaches in the system.\n",
+        "operationId": "getCoaches",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Coach"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "coaches"
+        ],
+        "summary": "adds a coach",
+        "description": "Adds a coach to the system",
+        "operationId": "addCoach",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "inventoryItem",
+            "description": "Coach item to add",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Coach"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "item created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing item already exists"
+          }
+        }
+      }
+    },
+    "/coaches/{id}": {
+      "get": {
+        "tags": [
+          "coaches"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The coach ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Coach"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "coaches"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The coach ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "updates a coach",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Coach"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "coaches"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The coach ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "deletes a coach",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Coach"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/coaches/search": {
+      "get": {
+        "tags": [
+          "coaches"
+        ],
+        "summary": "search all coaches",
+        "description": "Search all coaches in the systems by their attributes.\n",
+        "operationId": "searchCoaches",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "searchString",
+            "in": "query",
+            "description": "pass an optional search string for looking up",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Coach"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/matches": {
+      "get": {
+        "tags": [
+          "matches"
+        ],
+        "summary": "shows all matches",
+        "description": "See all matches in the system.\n",
+        "operationId": "getmatches",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Match"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "matches"
+        ],
+        "summary": "adds a match",
+        "description": "Adds a match to the system",
+        "operationId": "addMatch",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "inventoryItem",
+            "description": "Match item to add",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Match"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "item created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing item already exists"
+          }
+        }
+      }
+    },
+    "/matches/{id}": {
+      "get": {
+        "tags": [
+          "matches"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The match ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Match"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "matches"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The match ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "updates a match",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Match"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "matches"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The match ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "deletes a match",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/match"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/matches/search": {
+      "get": {
+        "tags": [
+          "matches"
+        ],
+        "summary": "search all matches",
+        "description": "Search all matches in the systems by their attributes.\n",
+        "operationId": "searchMatches",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "searchString",
+            "in": "query",
+            "description": "pass an optional search string for looking up",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Match"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/players": {
+      "get": {
+        "tags": [
+          "players"
+        ],
+        "summary": "shows all players",
+        "description": "See all players in the system.\n",
+        "operationId": "getPlayers",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Player"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "players"
+        ],
+        "summary": "adds a player",
+        "description": "Adds a player to the system",
+        "operationId": "addPlayer",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "inventoryItem",
+            "description": "Player item to add",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Player"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "item created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing item already exists"
+          }
+        }
+      }
+    },
+    "/players/{id}": {
+      "get": {
+        "tags": [
+          "players"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The player ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Player"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "players"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The player ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "updates a player",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Player"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "players"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The player ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "deletes a player",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Player"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/players/search": {
+      "get": {
+        "tags": [
+          "players"
+        ],
+        "summary": "search all players",
+        "description": "Search all players in the systems by their attributes.\n",
+        "operationId": "searchPlayers",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "searchString",
+            "in": "query",
+            "description": "pass an optional search string for looking up",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Player"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/referees": {
+      "get": {
+        "tags": [
+          "referees"
+        ],
+        "summary": "shows all referees",
+        "description": "See all referees in the system.\n",
+        "operationId": "getReferees",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Referee"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "referees"
+        ],
+        "summary": "adds a referee",
+        "description": "Adds a referee to the system",
+        "operationId": "addReferee",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "inventoryItem",
+            "description": "Referee item to add",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Referee"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "item created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing item already exists"
+          }
+        }
+      }
+    },
+    "/referees/{id}": {
+      "get": {
+        "tags": [
+          "referees"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The referee ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Referee"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "referees"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The referee ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "updates a referee",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Referee"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "referees"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The referee ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "deletes a referee",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Referee"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/referees/search": {
+      "get": {
+        "tags": [
+          "referees"
+        ],
+        "summary": "search all referees",
+        "description": "Search all referees in the systems by their attributes.\n",
+        "operationId": "searchReferees",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "searchString",
+            "in": "query",
+            "description": "pass an optional search string for looking up",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Referee"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    },
+    "/teams": {
+      "get": {
+        "tags": [
+          "teams"
+        ],
+        "summary": "shows all teams",
+        "description": "See all teams in the system.\n",
+        "operationId": "getTeams",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Team"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "teams"
+        ],
+        "summary": "adds a team",
+        "description": "Adds a team to the system",
+        "operationId": "addTeam",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "inventoryItem",
+            "description": "Team item to add",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Team"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "item created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing item already exists"
+          }
+        }
+      }
+    },
+    "/teams/{id}": {
+      "get": {
+        "tags": [
+          "teams"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The team ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Team"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "teams"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The team ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "updates a team",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Team"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "teams"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The team ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "deletes a team",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Team"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/teams/search": {
+      "get": {
+        "tags": [
+          "teams"
+        ],
+        "summary": "search all teams",
+        "description": "Search all teams in the systems by their attributes.\n",
+        "operationId": "searchTeams",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "searchString",
+            "in": "query",
+            "description": "pass an optional search string for looking up",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "search results matching criteria",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Team"
+              }
+            }
+          },
+          "400": {
+            "description": "bad input parameter"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Coach": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Adam"
+        },
+        "surname": {
+          "type": "string",
+          "example": "Smith"
+        },
+        "birth_date": {
+          "type": "string",
+          "format": "date",
+          "example": "2016-08-29T00:00:00.000+0000"
+        },
+        "nationality": {
+          "type": "string",
+          "example": "Switzerland"
+        }
+      }
+    },
+    "Match": {
+      "type": "object",
+      "required": [
+        "away",
+        "day",
+        "home",
+        "referee_id",
+        "season_end",
+        "season_start"
+      ],
+      "properties": {
+        "home": {
+          "type": "string",
+          "example": "Arsenal FC"
+        },
+        "away": {
+          "type": "string",
+          "example": "Arsenal FC"
+        },
+        "day": {
+          "type": "string",
+          "format": "date",
+          "example": "2022-1-12"
+        },
+        "season_start": {
+          "type": "string",
+          "format": "date",
+          "example": "2022-09-13T00:00:00.000+0000"
+        },
+        "season_end": {
+          "type": "string",
+          "format": "date",
+          "example": "2023-06-04T00:00:00.000+0000"
+        },
+        "referee_id": {
+          "type": "integer",
+          "example": 3
+        }
+      }
+    },
+    "Player": {
+      "type": "object",
+      "required": [
+        "name",
+        "role"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Adam"
+        },
+        "surname": {
+          "type": "string",
+          "example": "Smith"
+        },
+        "birth_date": {
+          "type": "string",
+          "format": "date",
+          "example": "2016-08-29T00:00:00.000+0000"
+        },
+        "nationality": {
+          "type": "string",
+          "example": "Switzerland"
+        },
+        "height": {
+          "type": "string",
+          "example": "187 cm"
+        },
+        "role": {
+          "type": "string",
+          "example": "FW"
+        }
+      }
+    },
+    "Referee": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Adam"
+        },
+        "surname": {
+          "type": "string",
+          "example": "Smith"
+        },
+        "birth_date": {
+          "type": "string",
+          "format": "date",
+          "example": "2016-08-29T00:00:00.000+0000"
+        },
+        "nationality": {
+          "type": "string",
+          "example": "Switzerland"
+        }
+      }
+    },
+    "Team": {
+      "type": "object",
+      "required": [
+        "address",
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Arsenal FC"
+        },
+        "address": {
+          "type": "string",
+          "example": "Lioncoln street 23, Chelsea"
+        },
+        "stadium": {
+          "type": "string",
+          "example": "Old Trafford"
+        },
+        "url": {
+          "type": "string",
+          "example": "www.chelsea.co.uk"
+        }
+      }
+    }
+  }
+}
